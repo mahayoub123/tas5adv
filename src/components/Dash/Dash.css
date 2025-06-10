@@ -1,0 +1,186 @@
+.profileImgStyle {
+  width: 182px;
+  height: 169px;
+  border-radius: 50%;
+}
+.logoImgStyle {
+  width: 84.88px;
+  height: 23px;
+}
+.usernameStyle {
+  font-family: var(--montserrat-font);
+  font-weight: 700;
+  font-size: 17px;
+}
+.containerStyle {
+  display: flex;
+  flex-direction: column;
+}
+.item-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.dashboardContainer {
+  display: flex;
+}
+.itemContainer {
+  display: flex;
+  transform: translate(-36rem, 16rem);
+  gap: 16px;
+}
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+}
+.dashboardBtnStyle {
+  width: 193px;
+  height: 41px;
+  border-radius: 4px;
+  background-color: var(--btn-and-bg-color);
+  font-family: var(--montserrat-font);
+  cursor: pointer;
+  margin-block: 16px;
+}
+.logoutBtnStyle {
+  font-family: var(--montserrat-font);
+  font-weight: 500;
+  font-size: 14px;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+}
+.searchStyle {
+  width: 664px;
+  height: 40px;
+  border-radius: 8px;
+  border-width: 1px;
+  font-family: var(--montserrat-font);
+  background-color: var(--bg-color);
+}
+.iconStyle {
+  transform: translate(42rem, -3rem);
+}
+.addBtnStyle {
+  width: 199px;
+  height: 44px;
+  border-radius: 4px;
+  color: var(--bg-color);
+  background-color: var(--btn-and-bg-color);
+  transform: translate(30rem, 2rem);
+  cursor: pointer;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.hover-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+}
+
+.image-wrapper:hover .hover-menu {
+  opacity: 1;
+}
+
+.hover-btn {
+  padding: 6px 12px;
+  margin: 4px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  width: 81px;
+  height: 34px;
+  background-color: var(--btn-and-bg-color);
+  color: var(--bg-color);
+  border-radius: 4px;
+  font-family: var(--montserrat-font);
+}
+.hover-delete-btn {
+  font-family: var(--montserrat-font);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 6px 12px;
+  margin: 4px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  width: 81px;
+  height: 34px;
+  background-color: var(--delete-btn);
+  color: var(--bg-color);
+  border-radius: 4px;
+}
+
+.hover-btn:hover {
+  background-color: #ddd;
+}
+
+.hover-delete-btn:hover {
+  background-color: #ddd;
+}
+.popupStyle {
+  position: absolute;
+  top: 300px;
+  right: 100px;
+  width: 948px;
+  height: 321px;
+  border-radius: 20px;
+  background-color: var(--bg-color);
+}
+.modelBodyStyle {
+  font-family: var(--montserrat-font);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--product-title-color);
+  text-transform: uppercase;
+}
+.popupBtnStyle {
+  width: 199px;
+  height: 61px;
+  background-color: var(--btn-and-bg-color);
+  font-family: var(--montserrat-font);
+  color: var(--bg-color);
+  border-radius: 4px;
+}
+.popupBtnContainer {
+  display: flex;
+  justify-content: space-around;
+}
+.dashboardPageContainer {
+  position: relative;
+}
+.status {
+  width: 199px;
+  height: 61px;
+  background-color: var(--bg-color);
+  font-family: var(--montserrat-font);
+  color: var(--delete-btn);
+  border-radius: 4px;
+}
+@media (min-width: 460px) and (max-width: 800px) {
+  .usernameStyle,
+  .addBtnStyle,
+  .dashboardBtnStyle {
+    font-size: 18px;
+  }
+}

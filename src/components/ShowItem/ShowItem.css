@@ -1,0 +1,48 @@
+.phoneImgStyle {
+  width: 373px;
+  height: 373px;
+  border-radius: 16px;
+}
+.descStyle {
+  font-family: var(--montserrat-font);
+  font-weight: 500;
+  font-size: 40px;
+  text-transform: capitalize;
+  color: var(--input-color);
+  transform: translate(3rem, -3rem);
+}
+.infoContainer {
+  display: flex;
+}
+.rowStyling {
+  display: flex;
+  justify-content: space-between;
+}
+.rowStyling2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.productTitleStyle {
+  font-family: var(--montserrat-font);
+  font-weight: 600;
+  font-size: 60px;
+  text-transform: capitalize;
+  color: var(--product-title-color);
+}
+
+@media (min-width: 460px) and (max-width: 800px) {
+  .descStyle {
+    font-size: 18px;
+    transform: translate(1rem, 0rem);
+  }
+  .productTitleStyle {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1440px) {
+  .productTitleStyle {
+    font-size: 18px;
+  }
+}
