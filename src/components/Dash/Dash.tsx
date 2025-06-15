@@ -208,7 +208,9 @@ const Dash: React.FC = () => {
                         <div className="hover-menu">
                           <button
                             className="hover-btn"
-                            onClick={() => navigate("/edititem")}
+                            onClick={() =>
+                              navigate("/edititem", { state: { item } })
+                            }
                           >
                             Edit
                           </button>

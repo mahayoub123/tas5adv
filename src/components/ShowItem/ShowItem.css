@@ -45,4 +45,8 @@
   .productTitleStyle {
     font-size: 18px;
   }
+  .phoneImgStyle {
+    width: 231px;
+    height: 187px;
+  }
 }

@@ -43,6 +43,9 @@
   cursor: pointer;
   margin-block: 16px;
 }
+.dashboardBtnStyle img {
+  padding-inline-end: 10px;
+}
 .logoutBtnStyle {
   font-family: var(--montserrat-font);
   font-weight: 500;
@@ -182,5 +185,10 @@
   .addBtnStyle,
   .dashboardBtnStyle {
     font-size: 18px;
+  }
+}
+@media (min-width: 801px) and (max-width: 1440px) {
+  .addBtnStyle {
+    margin-right: 22px;
   }
 }

@@ -39,7 +39,7 @@
   gap: 16px;
 }
 
-@media (min-width: 460px) and (max-width: 1000px) {
+@media (min-width: 460px) and (max-width: 800px) {
   .formDecoration {
     display: flex;
     flex-direction: column;

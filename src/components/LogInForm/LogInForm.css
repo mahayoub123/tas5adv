@@ -23,7 +23,6 @@
   font-weight: 500;
   font-size: 14px;
   color: var(--input-color);
-  transform: translate(-11rem, 0rem);
 }
 .inputDecoration {
   width: 415.87px;
@@ -51,5 +50,11 @@
 @media (min-width: 460px) and (max-width: 800px) {
   .parStyle {
     font-size: 18px;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1440px) {
+  .inputDecoration {
+    width: 171.87px;
   }
 }

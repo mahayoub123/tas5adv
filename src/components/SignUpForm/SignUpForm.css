@@ -8,4 +8,11 @@
   border-radius: 4px;
   border-width: 1px;
   margin-block-end: 22px;
+  margin-top: 22px;
+}
+
+@media (min-width: 801px) and (max-width: 1440px) {
+  .inputEmailStyle input {
+    width: 471.87px;
+  }
 }

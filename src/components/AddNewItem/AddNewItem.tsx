@@ -103,16 +103,24 @@ const AddNewItem: React.FC = () => {
             />
           </div>
 
-          <div>
+          <div className="imageUploadWrapper">
             <p className="feildTitleStyle">Image</p>
+
+            <label htmlFor="image-upload" className="customImageInput">
+              <img src={virtualImg} alt="Upload icon" className="uploadIcon" />
+              <span>
+                {item.image_url ? item.image_url.name : "Choose Image"}
+              </span>
+            </label>
+
             <input
               type="file"
+              id="image-upload"
               name="image_url"
-              className="productInputStyle2"
               accept="image/*"
+              className="hiddenFileInput"
               onChange={handleChange}
             />
-            <img src={virtualImg} alt="Upload icon" />
           </div>
         </div>
 

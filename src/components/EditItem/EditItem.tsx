@@ -1,24 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./EditItem.css";
 
-interface NewItem {
+interface Item {
+  id?: number;
   name: string;
   price: string;
-  image_url?: File | null;
+  image_url?: string;
+  imageFile?: File | null;
 }
 
 const EditItem: React.FC = () => {
-  const [item, setItem] = useState<NewItem>({
+  const [item, setItem] = useState<Item>({
     name: "",
-    price: "0",
-    image_url: null,
+    price: "",
+    imageFile: null,
   });
 
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchItem = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        console.log("TOKEN:", token);
+        console.log("ID:", id);
+        if (!token) throw new Error("Unauthorized");
+
+        const response = await axios.get(
+          `https://web-production-3ca4c.up.railway.app/api/items/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log(response.data, "kkkkk");
+
+        setItem({
+          name: response.data.name,
+          price: response.data.price.toString(),
+          image_url: response.data.image_url,
+          imageFile: null,
+        });
+      } catch (err: any) {
+        console.error("FETCH ERROR:", err);
+        setError(err.response?.data?.message || err.message);
+      }
+    };
+
+    if (id) {
+      fetchItem();
+    }
+  }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,6 +66,15 @@ const EditItem: React.FC = () => {
     }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setItem((prevItem) => ({
+        ...prevItem,
+        imageFile: e.target.files![0],
+      }));
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -35,32 +82,32 @@ const EditItem: React.FC = () => {
 
     try {
       const token = localStorage.getItem("token");
-      if (!token) throw new Error("Unauthorized: No token found");
+      if (!token) throw new Error("Unauthorized");
 
       const formData = new FormData();
       formData.append("name", item.name);
       formData.append("price", item.price);
-      if (item.image_url) {
-        formData.append("image", item.image_url); // 🟢 Match this with your backend field name
+      if (item.imageFile) {
+        formData.append("image", item.imageFile);
       }
 
+      formData.append("_method", "PUT");
+
       await axios.post(
-        "https://web-production-3ca4c.up.railway.app/api/items/2",
+        `https://web-production-3ca4c.up.railway.app/api/items/${id}`,
         formData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
+            Accept: "application/json",
           },
         }
       );
 
       setSuccess("Item updated successfully!");
-      setItem({ name: "", price: "0", image_url: null });
-
       setTimeout(() => navigate("/dashboard"), 1000);
     } catch (err: any) {
-      console.log(err);
       setError(err.response?.data?.message || err.message);
     }
   };
@@ -82,6 +129,7 @@ const EditItem: React.FC = () => {
               onChange={handleChange}
               required
             />
+
             <p className="feildTitleStyle">Price</p>
             <input
               type="number"
@@ -96,22 +144,23 @@ const EditItem: React.FC = () => {
 
           <div>
             <p className="feildTitleStyle">Image</p>
+            {item.image_url && (
+              <img
+                src={item.image_url}
+                alt="Current"
+                style={{ width: "150px", marginBottom: "10px" }}
+              />
+            )}
             <input
               type="file"
-              name="image_url"
+              name="image"
               className="productInputStyle2"
               accept="image/*"
-              onChange={(e) => {
-                if (e.target.files && e.target.files.length > 0) {
-                  setItem((prevItem) => ({
-                    ...prevItem,
-                    image_url: e.target.files![0],
-                  }));
-                }
-              }}
+              onChange={handleFileChange}
             />
           </div>
         </div>
+
         <button type="submit" className="saveBtnStyle">
           SAVE
         </button>
